@@ -6,6 +6,21 @@
 <title>Bf Planlama | Soğuk Sıkım Zeytinyağı, Zeytin ve Tıbbi Aromatik Bitkiler · Fethiye, Göcek, Seydikemer</title>
 <meta name="description" content="Bf Planlama; Seydikemer'deki kendi zeytinliklerinde, ziraat fakülteleriyle iş birliği içinde soğuk sıkım, yüksek polifenollü zeytinyağı üretir. Tavşan Yüreği, Memecik ve yabani zeytin.">
 <meta name="theme-color" content="#2f3a1f">
+<link rel="canonical" href="https://kamertulu-cmd.github.io/bf-planlama/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='19' fill='%232f3a1f'/%3E%3Cpath d='M11 29c6-3 11-9 17-18' stroke='%23e6d3a3' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3Cellipse cx='17' cy='18' rx='6' ry='2.2' transform='rotate(-60 17 18)' fill='%23b7c28a'/%3E%3Cellipse cx='24' cy='20' rx='6' ry='2.2' transform='rotate(10 24 20)' fill='%23b7c28a'/%3E%3Cellipse cx='15.5' cy='27' rx='2.6' ry='3.2' fill='%23b8913a'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="Bf Planlama">
+<meta property="og:title" content="Bf Planlama | Soğuk Sıkım Zeytinyağı, Zeytin ve Tıbbi Aromatik Bitkiler">
+<meta property="og:description" content="Seydikemer'deki kendi zeytinliklerimizde, ziraat fakülteleriyle birlikte ürettiğimiz soğuk sıkım, yüksek polifenollü zeytinyağı.">
+<meta property="og:url" content="https://kamertulu-cmd.github.io/bf-planlama/">
+<meta property="og:image" content="https://kamertulu-cmd.github.io/bf-planlama/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Bf Planlama","description":"Soğuk sıkım zeytinyağı, zeytin ve tıbbi aromatik bitki üretimi","url":"https://kamertulu-cmd.github.io/bf-planlama/","image":"https://kamertulu-cmd.github.io/bf-planlama/og.png","telephone":"+905016114848","email":"bilgi@no52.com.tr","address":{"@type":"PostalAddress","streetAddress":"Gökçeovacık Mah. Eski Gökçeovacık Sok. No: 52","addressLocality":"Fethiye","addressRegion":"Muğla","addressCountry":"TR"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:30","closes":"18:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"14:00"}]}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -201,13 +216,15 @@
     .cards,.vgrid,.why,.tgrid{grid-template-columns:1fr 1fr}
     .stats{grid-template-columns:1fr 1fr}
   }
-  @media (max-width: 760px){
-    body{font-size:16px}
+  @media (max-width: 900px){
     .menu-btn{display:grid}
     .nav{position:fixed;inset:68px 0 auto 0;flex-direction:column;align-items:stretch;gap:0;background:var(--cream);border-bottom:1px solid var(--sand);padding:8px 20px 20px;transform:translateY(-120%);transition:transform .25s ease;box-shadow:0 12px 24px rgba(38,48,26,.1)}
     .nav.open{transform:none}
     .nav a{padding:14px 4px;border-bottom:1px solid var(--sand);font-size:17px}
     .nav .btn{margin-top:14px;justify-content:center;border-bottom:0}
+  }
+  @media (max-width: 760px){
+    body{font-size:16px}
     .hero{padding:40px 0 40px}
     .hero-art{max-width:200px;margin-bottom:-8px}
     .sec{padding:64px 0}
@@ -220,6 +237,19 @@
     .wa-float{padding:16px}
   }
   @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+  /* Düzeltmeler */
+  .brand{white-space:nowrap}.brand-mark{flex:none}
+  .wa-float{padding:16px;opacity:0;pointer-events:none;transition:opacity .2s ease, transform .15s ease}
+  .wa-float.show{opacity:1;pointer-events:auto}
+  .wa-float span{display:none}
+  .crow a{display:inline-block;padding:10px 0}
+  .crow .link{margin-top:0}
+  footer .wrap{align-items:center}
+  footer a{display:inline-block;padding:10px 0}
+  @media (max-width: 760px){
+    .hero-art{order:2;max-width:170px;margin:30px auto 0}
+  }
 </style>
 </head>
 
@@ -284,7 +314,7 @@
       <p class="lead">Seydikemer'deki kendi zeytinliklerimizde, ziraat fakülteleriyle el ele üretiyoruz. Soğuk sıkım, yüksek polifenollü zeytinyağı; Tavşan Yüreği, Memecik ve yabani zeytinden.</p>
       <div class="org-badge">
         <svg aria-hidden="true"><use href="#i-leaf"/></svg>
-        <span data-org="off">Organik tarım sertifikasyonumuzu tamamlıyoruz</span>
+        <span data-org="off">Organik tarım sertifikasyon sürecindeyiz</span>
         <span data-org="on">Organik Sertifikalı Üretim</span>
       </div>
       <div class="hero-actions">
@@ -349,7 +379,7 @@
         <p>Bf Planlama olarak Muğla'nın Fethiye Gökçeovacık, Göcek ve Seydikemer bölgelerinde zeytinyağı, zeytin ve tıbbi aromatik bitki üretimi yapıyoruz.</p>
         <p>Zeytinlerimiz, Seydikemer'deki 400 dönümlük kendi arazimizde, 10 yaş ve üzerindeki genç ağaçlarımızdan geliyor. Üretimin her aşamasını üniversitelerin ziraat fakülteleriyle ve alanında uzman profesörlerle birlikte planlıyoruz. Ne yaptığımızı tahmine değil, bilgiye dayandırmayı seviyoruz.</p>
         <p>Toprağımıza da aynı özenle bakıyoruz: 3 yıldır arazimizde hiçbir gübre ya da zirai ilaç kullanmıyoruz.
-          <span data-org="off">Organik tarım sertifikasyon sürecimizi de bu ay tamamlıyoruz.</span>
+          <span data-org="off">Organik tarım sertifikasyon sürecimiz devam ediyor.</span>
           <span data-org="on">Üretimimiz organik tarım sertifikalıdır.</span>
         </p>
         <p>Sıradaki hedefimiz Göcek. Oradaki 350 dönümlük arazimizde, yine ziraat fakülteleriyle başlattığımız iş birliğiyle, 160 çeşide kadar tıbbi aromatik bitki yetiştirmeye hazırlanıyoruz.</p>
@@ -392,7 +422,7 @@
         <ul>
           <li>Analizlerimizde polifenol değeri genellikle 350 mg/kg ve üzerinde</li>
           <li>Kalitesini korumak için soğuk tanklarda, azot altında saklanır</li>
-          <li>Her hasat döneminde analizleri yeniden yaptırılır</li>
+          <li>Şu an sunduğumuz yağ önceki hasatlarımızdan; her yeni üretimde analizini yeniden yaptırıyoruz</li>
         </ul>
       </article>
 
@@ -437,7 +467,7 @@
         <div class="variety">
           <svg class="dot" style="color:#b8913a" aria-hidden="true"><use href="#i-olive"/></svg>
           <h4>Yabani Zeytin</h4>
-          <p>Doğada kendiliğinden yetişen, küçük taneli yabani zeytin. Az ama karakterli yağ verir; bu coğrafyanın en eski mirasını sofranıza taşır.</p>
+          <p>Aşılanmamış, doğada kendiliğinden yetişen zeytin; halk arasında delice olarak da bilinir. Tavşan Yüreği ve Memecik ile birlikte yağımızın üçüncü bileşenidir.</p>
         </div>
       </div>
     </div>
@@ -457,7 +487,7 @@
       <p>Polifenoller, zeytinin kendi ürettiği doğal antioksidan bileşenlerdir. Natürel sızma zeytinyağını sıradan bir yağdan ayıran, o meyvemsi koku, hafif acılık ve boğazdaki yakıcılık büyük ölçüde onlardan gelir.</p>
       <ul class="poly-list">
         <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Soğuk sıkım:</b> Zeytini ısıtmadan sıkarak bu hassas bileşenlerin yağa geçmesini sağlıyoruz.</span></li>
-        <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Doğru çeşit:</b> Tavşan Yüreği, Memecik ve yabani zeytin, fenolik bileşenleriyle öne çıkan çeşitler.</span></li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Doğru çeşit:</b> Fenolik bileşenleriyle bilinen Tavşan Yüreği ve Memecik'i yabani zeytinle birlikte kullanıyoruz.</span></li>
         <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Doğru saklama:</b> Yağımızı soğuk tanklarda azot altında bekleterek kalitesini koruyoruz.</span></li>
       </ul>
       <a class="btn btn-gold" href="https://no52.com.tr/zeytinyag-analiz-raporu" target="_blank" rel="noopener">Analiz raporlarını inceleyin</a>
@@ -487,7 +517,7 @@
       <article class="trait">
         <span class="n">02</span><span class="where uretim">Üretimde</span>
         <h3>Değerli çeşitler</h3>
-        <p>Her zeytin çeşidinin yağı farklıdır. Oleokantal potansiyeliyle öne çıkan Tavşan Yüreği, hidroksitirozol ve tirozol içeren Memecik ve karakterli yabani zeytin, yağımızın fenolik gücünü oluşturur.</p>
+        <p>Her zeytin çeşidinin yağı farklıdır. Oleokantal potansiyeliyle öne çıkan Tavşan Yüreği, hidroksitirozol ve tirozol içeren Memecik ve yabani zeytin, yağımızın karakterini oluşturur.</p>
       </article>
       <article class="trait">
         <span class="n">03</span><span class="where uretim">Üretimde</span>
@@ -497,7 +527,7 @@
       <article class="trait">
         <span class="n">04</span><span class="where uretim">Üretimde</span>
         <h3>Soğuk sıkım</h3>
-        <p>Polifenoller ısıya hassastır. Zeytini düşük sıcaklıkta işleyerek bu bileşenlerin yağa geçmesini sağlıyoruz. Sıcaklık yükseldikçe polifenoller kaybolur, asit ve peroksit artar.</p>
+        <p>Polifenoller ısıya hassastır. Zeytini düşük sıcaklıkta işleyerek bu bileşenlerin yağa geçmesini sağlıyoruz. Sıcaklık yükseldikçe polifenoller azalır, asit ve peroksit artar.</p>
       </article>
       <article class="trait">
         <span class="n">05</span><span class="where uretim">Üretimde</span>
@@ -540,14 +570,14 @@
         <div class="ic"><svg aria-hidden="true"><use href="#i-leaf"/></svg></div>
         <h3>Toprağa saygı duyuyoruz</h3>
         <p>3 yıldır arazimizde gübre ve zirai ilaç kullanmıyoruz.
-          <span data-org="off">Organik tarım sertifikasyonumuzu da bu ay tamamlıyoruz.</span>
+          <span data-org="off">Organik tarım sertifikasyon sürecimiz de devam ediyor.</span>
           <span data-org="on">Organik tarım sertifikamızla bunu belgeliyoruz.</span>
         </p>
       </div>
       <div class="why-item">
         <div class="ic"><svg aria-hidden="true"><use href="#i-field"/></svg></div>
         <h3>Kendi zeytinliğimiz, açık üretim</h3>
-        <p>Zeytinlerimiz Seydikemer'deki 400 dönümlük kendi arazimizden geliyor. Analizlerimizi düzenli yaptırıyor ve sonuçları sizinle paylaşıyoruz.</p>
+        <p>Zeytinlerimiz Seydikemer'deki 400 dönümlük kendi arazimizden geliyor. Her üretimde analiz yaptırıyor ve sonuçları sizinle paylaşıyoruz.</p>
       </div>
     </div>
   </div>
@@ -633,6 +663,14 @@
       a.addEventListener('click', function(){ nav.classList.remove('open'); btn.setAttribute('aria-expanded', false); });
     });
     document.getElementById('yil').textContent = new Date().getFullYear();
+    var fl = document.querySelector('.wa-float'), vis = new Set();
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(es){
+        es.forEach(function(e){ e.isIntersecting ? vis.add(e.target) : vis.delete(e.target); });
+        fl.classList.toggle('show', vis.size === 0);
+      });
+      document.querySelectorAll('.hero-actions, .wa-card').forEach(function(el){ io.observe(el); });
+    } else { fl.classList.add('show'); }
   })();
 </script>
 </body>
