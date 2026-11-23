@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bf Planlama | Soğuk Sıkım Zeytinyağı, Zeytin ve Tıbbi Aromatik Bitkiler · Fethiye, Göcek, Seydikemer</title>
+<meta name="description" content="Bf Planlama; Seydikemer'deki kendi zeytinliklerinde, ziraat fakülteleriyle iş birliği içinde soğuk sıkım, yüksek polifenollü zeytinyağı üretir. Tavşan Yüreği, Memecik ve yabani zeytin.">
+<meta name="theme-color" content="#2f3a1f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --olive-900:#26301a;
+    --olive-800:#2f3a1f;
+    --olive-700:#45542b;
+    --olive-500:#76873f;
+    --olive-300:#b7c28a;
+    --cream:#f8f4ea;
+    --sand:#ece3cc;
+    --gold:#b8913a;
+    --gold-soft:#e6d3a3;
+    --ink:#232819;
+    --muted:#5d6250;
+    --white:#fffdf8;
+    --radius:18px;
+    --shadow:0 1px 2px rgba(38,48,26,.06), 0 8px 28px rgba(38,48,26,.08);
+    --serif:"Fraunces", Georgia, "Times New Roman", serif;
+    --sans:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.65;font-size:17px;-webkit-font-smoothing:antialiased}
+  img,svg{display:block;max-width:100%}
+  a{color:inherit}
+  .wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+  section{scroll-margin-top:76px}
+
+  /* Organik durum anahtarı: body etiketine class="sertifikali" eklenince sertifikalı metinler görünür */
+  [data-org="on"]{display:none}
+  body.sertifikali [data-org="on"]{display:revert}
+  body.sertifikali [data-org="off"]{display:none}
+
+  /* ---------- Butonlar ---------- */
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;transition:transform .15s ease, background .2s ease, box-shadow .2s ease;border:0;cursor:pointer}
+  .btn:hover{transform:translateY(-1px)}
+  .btn svg{width:20px;height:20px;flex:none}
+  .btn-wa{background:var(--olive-700);color:var(--white);box-shadow:0 6px 18px rgba(69,84,43,.28)}
+  .btn-wa:hover{background:var(--olive-800)}
+  .btn-ghost{background:transparent;color:var(--olive-800);border:1.5px solid var(--olive-700)}
+  .btn-ghost:hover{background:rgba(69,84,43,.07)}
+  .btn-gold{background:var(--gold);color:var(--olive-900)}
+  .btn-gold:hover{background:#c9a24a}
+
+  /* ---------- Üst menü ---------- */
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(248,244,234,.88);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid rgba(69,84,43,.12)}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--serif);font-size:22px;font-weight:600;color:var(--olive-800);letter-spacing:.2px}
+  .brand-mark{width:34px;height:34px}
+  .nav{display:flex;align-items:center;gap:28px}
+  .nav a{text-decoration:none;font-size:15px;font-weight:500;color:var(--muted)}
+  .nav a:hover{color:var(--olive-800)}
+  .nav .btn{padding:10px 18px;font-size:15px;color:var(--white)}
+  .menu-btn{display:none;background:none;border:0;width:44px;height:44px;border-radius:10px;cursor:pointer;color:var(--olive-800)}
+  .menu-btn svg{width:26px;height:26px;margin:auto}
+
+  /* ---------- Giriş ---------- */
+  .hero{position:relative;overflow:hidden;padding:72px 0 56px;
+    background:
+      radial-gradient(900px 500px at 85% 10%, rgba(183,194,138,.35), transparent 60%),
+      radial-gradient(700px 400px at 0% 100%, rgba(230,211,163,.45), transparent 60%),
+      var(--cream)}
+  .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:var(--olive-700)}
+  .kicker::before{content:"";width:22px;height:1.5px;background:var(--gold)}
+  .hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(40px,6vw,68px);line-height:1.05;color:var(--olive-900);margin:16px 0 10px;letter-spacing:-.5px}
+  .slogan{font-family:var(--serif);font-size:clamp(21px,2.6vw,28px);color:var(--olive-700);font-weight:500;line-height:1.3;margin-bottom:18px}
+  .lead{font-size:18px;color:var(--muted);max-width:560px;margin-bottom:22px}
+  .org-badge{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--gold-soft);color:var(--olive-800);padding:8px 14px;border-radius:999px;font-size:14px;font-weight:600;margin-bottom:26px}
+  .org-badge svg{width:18px;height:18px;color:var(--olive-500)}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+  .hero-art{position:relative}
+  .hero-art svg{width:100%;height:auto}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:52px}
+  .stat{background:var(--white);border:1px solid var(--sand);border-radius:var(--radius);padding:18px 18px 16px}
+  .stat b{display:block;font-family:var(--serif);font-size:30px;font-weight:600;color:var(--olive-800);line-height:1.1}
+  .stat span{font-size:14px;color:var(--muted);line-height:1.4;display:block;margin-top:6px}
+
+  /* ---------- Bölüm başlıkları ---------- */
+  .sec{padding:92px 0}
+  .sec-head{max-width:720px;margin-bottom:44px}
+  .sec-head h2{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4vw,44px);line-height:1.15;color:var(--olive-900);margin-top:12px}
+  .sec-head p{color:var(--muted);margin-top:14px;font-size:18px}
+
+  /* ---------- Hakkımızda ---------- */
+  .about{background:var(--white);border-block:1px solid var(--sand)}
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
+  .about-text p{margin-bottom:16px;color:#3a3f2e}
+  .about-text p:last-child{margin-bottom:0}
+  .about-aside{background:var(--cream);border:1px solid var(--sand);border-radius:var(--radius);padding:30px}
+  .about-aside h3{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--olive-800);margin-bottom:18px}
+  .places{list-style:none;display:grid;gap:16px}
+  .places li{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start}
+  .places .ic{width:40px;height:40px;border-radius:12px;background:var(--olive-800);color:var(--gold-soft);display:grid;place-items:center}
+  .places .ic svg{width:20px;height:20px}
+  .places b{display:block;color:var(--olive-900);font-weight:600}
+  .places span{font-size:15px;color:var(--muted);line-height:1.5}
+
+  /* ---------- Hizmetler / Ürünler ---------- */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{position:relative;background:var(--white);border:1px solid var(--sand);border-radius:var(--radius);padding:30px 26px 28px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+  .card .num{font-family:var(--serif);font-size:15px;font-weight:600;color:var(--gold);letter-spacing:1px}
+  .card h3{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--olive-900);margin:8px 0 12px;line-height:1.2}
+  .card p{color:#454a38;font-size:16px}
+  .card ul{list-style:none;margin-top:16px;display:grid;gap:8px}
+  .card li{display:flex;gap:10px;font-size:15px;color:var(--muted);line-height:1.45}
+  .card li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--olive-500);margin-top:8px}
+  .tag{position:absolute;top:22px;right:22px;font-size:12px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;background:var(--gold-soft);color:var(--olive-900);padding:5px 10px;border-radius:999px}
+
+  .varieties{margin-top:64px}
+  .varieties h3.sub{font-family:var(--serif);font-size:28px;font-weight:600;color:var(--olive-900);margin-bottom:8px}
+  .varieties > p{color:var(--muted);margin-bottom:26px;max-width:680px}
+  .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .variety{border-radius:var(--radius);padding:26px;background:linear-gradient(160deg,var(--white),#f3eddc);border:1px solid var(--sand)}
+  .variety .dot{width:46px;height:46px;margin-bottom:14px}
+  .variety h4{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--olive-800);margin-bottom:8px}
+  .variety p{font-size:15.5px;color:#4a4f3c}
+
+  /* ---------- Polifenol bandı ---------- */
+  .poly{background:var(--olive-800);color:var(--cream);position:relative;overflow:hidden}
+  .poly::after{content:"";position:absolute;inset:auto -120px -160px auto;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(184,145,58,.28),transparent 65%)}
+  .poly .wrap{position:relative;z-index:1;display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+  .poly .kicker{color:var(--gold-soft)}
+  .poly h2{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4vw,44px);line-height:1.15;margin-top:12px;color:var(--white)}
+  .poly-num{font-family:var(--serif);font-size:clamp(64px,9vw,104px);line-height:1;color:var(--gold-soft);font-weight:600;margin-top:22px}
+  .poly-num small{font-family:var(--sans);font-size:18px;color:var(--olive-300);font-weight:500;margin-left:6px}
+  .poly-cap{color:var(--olive-300);font-size:15px;margin-top:6px}
+  .poly-text p{color:#e7e4d6;margin-bottom:16px}
+  .poly-list{list-style:none;display:grid;gap:12px;margin:22px 0 26px}
+  .poly-list li{display:grid;grid-template-columns:28px 1fr;gap:10px;color:#f1eee2;font-size:16px}
+  .poly-list svg{width:22px;height:22px;color:var(--gold);margin-top:2px}
+  .note{font-size:13px;color:var(--olive-300);margin-top:18px;line-height:1.5}
+
+  /* ---------- Polifenol özellikleri ---------- */
+  .traits{background:linear-gradient(180deg,#f3eddc,var(--cream))}
+  .tgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .trait{position:relative;background:var(--white);border:1px solid var(--sand);border-radius:var(--radius);padding:24px 22px 22px;box-shadow:var(--shadow)}
+  .trait .n{font-family:var(--serif);font-size:34px;font-weight:600;color:var(--gold-soft);line-height:1}
+  .trait .where{position:absolute;top:22px;right:20px;font-size:11.5px;font-weight:600;letter-spacing:.7px;text-transform:uppercase;padding:4px 9px;border-radius:999px}
+  .where.uretim{background:var(--olive-800);color:var(--gold-soft)}
+  .where.sofra{background:var(--gold-soft);color:var(--olive-900)}
+  .trait h3{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--olive-900);margin:12px 0 8px;line-height:1.25}
+  .trait p{font-size:15px;color:#4a4f3c;line-height:1.6}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;margin:-18px 0 30px;font-size:14px;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:8px}
+  .legend i{display:inline-block;width:12px;height:12px;border-radius:50%}
+
+  /* ---------- Neden biz ---------- */
+  .why{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .why-item{padding:30px 26px;border-radius:var(--radius);background:var(--white);border:1px solid var(--sand)}
+  .why-item .ic{width:52px;height:52px;border-radius:16px;background:var(--cream);border:1px solid var(--gold-soft);display:grid;place-items:center;color:var(--olive-700);margin-bottom:18px}
+  .why-item .ic svg{width:26px;height:26px}
+  .why-item h3{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--olive-900);margin-bottom:10px}
+  .why-item p{color:#4a4f3c;font-size:16px}
+
+  /* ---------- İletişim ---------- */
+  .contact{background:var(--white);border-top:1px solid var(--sand)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .cinfo{display:grid;gap:14px}
+  .crow{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start;padding:20px;border-radius:var(--radius);background:var(--cream);border:1px solid var(--sand)}
+  .crow .ic{width:48px;height:48px;border-radius:14px;background:var(--olive-800);color:var(--gold-soft);display:grid;place-items:center}
+  .crow .ic svg{width:22px;height:22px}
+  .crow small{display:block;font-size:13px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--olive-500)}
+  .crow a,.crow p{font-size:17px;color:var(--ink);text-decoration:none;font-weight:500}
+  .crow a:hover{color:var(--olive-700);text-decoration:underline}
+  .crow .link{display:inline-block;margin-top:6px;font-size:15px;color:var(--olive-700);font-weight:600}
+  .hours{list-style:none;margin-top:2px}
+  .hours li{display:flex;justify-content:space-between;gap:16px;font-size:16px;padding:4px 0;border-bottom:1px dashed rgba(69,84,43,.18)}
+  .hours li:last-child{border-bottom:0}
+  .hours li span:last-child{font-weight:600}
+  .wa-card{border-radius:var(--radius);padding:38px 34px;background:linear-gradient(150deg,var(--olive-800),var(--olive-700));color:var(--cream);display:flex;flex-direction:column;justify-content:center}
+  .wa-card h3{font-family:var(--serif);font-size:32px;font-weight:600;color:var(--white);line-height:1.2;margin-bottom:12px}
+  .wa-card p{color:#e1e0cf;margin-bottom:26px}
+  .wa-card .btn{align-self:flex-start}
+  .wa-card .btn + .btn{margin-top:12px}
+
+  footer{background:var(--olive-900);color:var(--olive-300);padding:34px 0;font-size:14px}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+  footer a{color:var(--gold-soft);text-decoration:none}
+
+  /* ---------- Sabit WhatsApp butonu ---------- */
+  .wa-float{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:10px;background:var(--olive-700);color:var(--white);text-decoration:none;font-weight:600;padding:14px 18px;border-radius:999px;box-shadow:0 10px 28px rgba(38,48,26,.35);transition:transform .15s ease}
+  .wa-float:hover{transform:translateY(-2px);background:var(--olive-800)}
+  .wa-float svg{width:24px;height:24px}
+
+  /* ---------- Mobil ---------- */
+  @media (max-width: 960px){
+    .hero .wrap,.about-grid,.poly .wrap,.contact-grid{grid-template-columns:1fr}
+    .hero-art{max-width:360px;margin:0 auto;order:-1}
+    .cards,.vgrid,.why,.tgrid{grid-template-columns:1fr 1fr}
+    .stats{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width: 760px){
+    body{font-size:16px}
+    .menu-btn{display:grid}
+    .nav{position:fixed;inset:68px 0 auto 0;flex-direction:column;align-items:stretch;gap:0;background:var(--cream);border-bottom:1px solid var(--sand);padding:8px 20px 20px;transform:translateY(-120%);transition:transform .25s ease;box-shadow:0 12px 24px rgba(38,48,26,.1)}
+    .nav.open{transform:none}
+    .nav a{padding:14px 4px;border-bottom:1px solid var(--sand);font-size:17px}
+    .nav .btn{margin-top:14px;justify-content:center;border-bottom:0}
+    .hero{padding:40px 0 40px}
+    .hero-art{max-width:200px;margin-bottom:-8px}
+    .sec{padding:64px 0}
+    .cards,.vgrid,.why,.tgrid{grid-template-columns:1fr}
+    .stat b{font-size:26px}
+    .hero-actions .btn{flex:1 1 100%;justify-content:center}
+    .wa-card{padding:30px 24px}
+    .wa-card .btn{align-self:stretch;justify-content:center}
+    .wa-float span{display:none}
+    .wa-float{padding:16px}
+  }
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+
+<!--
+  ORGANİK SERTİFİKA AYARI
+  Sertifika çıktığında aşağıdaki satırı <body class="sertifikali"> olarak değiştirin.
+  Böylece sitedeki "sertifikasyon sürecindeyiz" ifadeleri otomatik olarak "Organik Sertifikalı" olur.
+-->
+<body>
+
+<!-- Ortak ikonlar -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-chat" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.1A8 8 0 1 1 20 12Z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M9 10.5h6M9 13.5h4"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M5 3h3.5l1.5 4.5-2.2 1.4a11 11 0 0 0 7.3 7.3l1.4-2.2L21 15.5V19a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2Z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="m4 7 8 6 8-6"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M5 19c0-8 5-13 15-14-1 10-6 15-14 15"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M5 19 13 11"/></symbol>
+  <symbol id="i-flask" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M9 3h6M10 3v6L4.5 18.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M7 15h10"/></symbol>
+  <symbol id="i-field" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M3 20h18M6 20v-5M6 15c-2 0-3-1.5-3-3.5S5 8 6 8s3 1.5 3 3.5S8 15 6 15ZM15 20V11M15 11c-2.5 0-4-2-4-4.5S13.5 2 15 2s4 2 4 4.5S17.5 11 15 11Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="m8 12.5 2.8 2.7L16 9.5"/></symbol>
+  <symbol id="i-olive" viewBox="0 0 48 48"><ellipse cx="24" cy="26" rx="13" ry="16" fill="currentColor"/><ellipse cx="19.5" cy="20" rx="3.5" ry="5" fill="#fff" opacity=".22"/><path d="M24 10c1-4 4-6 8-6" fill="none" stroke="#45542b" stroke-width="2.4" stroke-linecap="round"/></symbol>
+</svg>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#giris" aria-label="Bf Planlama ana sayfa">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="20" r="19" fill="#2f3a1f"/>
+        <path d="M11 29c6-3 11-9 17-18" stroke="#e6d3a3" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <ellipse cx="17" cy="18" rx="6" ry="2.2" transform="rotate(-60 17 18)" fill="#b7c28a"/>
+        <ellipse cx="24" cy="20" rx="6" ry="2.2" transform="rotate(10 24 20)" fill="#b7c28a"/>
+        <ellipse cx="15.5" cy="27" rx="2.6" ry="3.2" fill="#b8913a"/>
+      </svg>
+      Bf Planlama
+    </a>
+    <button class="menu-btn" aria-label="Menüyü aç" aria-expanded="false" aria-controls="menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <nav class="nav" id="menu" aria-label="Ana menü">
+      <a href="#hakkimizda">Hakkımızda</a>
+      <a href="#urunler">Ürünlerimiz</a>
+      <a href="#polifenol">Polifenol</a>
+      <a href="#neden-biz">Neden Biz?</a>
+      <a href="#iletisim">İletişim</a>
+      <a class="btn btn-wa" href="https://wa.me/905016114848?text=Merhaba%2C%20Bf%20Planlama%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">
+        <svg aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- 1. GİRİŞ -->
+<section class="hero" id="giris">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Fethiye · Göcek · Seydikemer</span>
+      <h1>Bf Planlama</h1>
+      <p class="slogan">Topraktan şişeye, bilimle büyüyen zeytin.</p>
+      <p class="lead">Seydikemer'deki kendi zeytinliklerimizde, ziraat fakülteleriyle el ele üretiyoruz. Soğuk sıkım, yüksek polifenollü zeytinyağı; Tavşan Yüreği, Memecik ve yabani zeytinden.</p>
+      <div class="org-badge">
+        <svg aria-hidden="true"><use href="#i-leaf"/></svg>
+        <span data-org="off">Organik tarım sertifikasyonumuzu tamamlıyoruz</span>
+        <span data-org="on">Organik Sertifikalı Üretim</span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-wa" href="https://wa.me/905016114848?text=Merhaba%2C%20Bf%20Planlama%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp'tan Yazın
+        </a>
+        <a class="btn btn-ghost" href="#urunler">Ürünlerimizi İnceleyin</a>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 400 400">
+        <circle cx="210" cy="200" r="170" fill="#ece3cc"/>
+        <circle cx="210" cy="200" r="130" fill="#f8f4ea"/>
+        <path d="M70 350 C 150 290, 230 210, 330 70" stroke="#45542b" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <g fill="#76873f">
+          <ellipse cx="0" cy="0" rx="40" ry="11" transform="translate(118 290) rotate(-100) translate(38 0)"/>
+          <ellipse cx="0" cy="0" rx="40" ry="11" transform="translate(130 300) rotate(5) translate(38 0)"/>
+          <ellipse cx="0" cy="0" rx="42" ry="11" transform="translate(178 245) rotate(-105) translate(40 0)"/>
+          <ellipse cx="0" cy="0" rx="42" ry="11" transform="translate(192 250) rotate(0) translate(40 0)"/>
+          <ellipse cx="0" cy="0" rx="40" ry="10" transform="translate(238 180) rotate(-110) translate(38 0)"/>
+          <ellipse cx="0" cy="0" rx="40" ry="10" transform="translate(250 185) rotate(-5) translate(38 0)"/>
+          <ellipse cx="0" cy="0" rx="36" ry="9" transform="translate(290 118) rotate(-115) translate(34 0)"/>
+          <ellipse cx="0" cy="0" rx="36" ry="9" transform="translate(300 120) rotate(-15) translate(34 0)"/>
+        </g>
+        <g fill="#b7c28a" opacity=".85">
+          <ellipse cx="0" cy="0" rx="30" ry="7" transform="translate(150 270) rotate(-60) translate(28 0)"/>
+          <ellipse cx="0" cy="0" rx="30" ry="7" transform="translate(268 150) rotate(-70) translate(28 0)"/>
+        </g>
+        <path d="M168 262 q2 22 -6 36 M176 258 q14 18 14 34 M244 190 q6 20 -2 34" stroke="#45542b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <g>
+          <ellipse cx="160" cy="312" rx="15" ry="19" fill="#2f3a1f"/>
+          <ellipse cx="155" cy="305" rx="4" ry="6" fill="#fff" opacity=".2"/>
+          <ellipse cx="192" cy="306" rx="15" ry="19" fill="#45542b"/>
+          <ellipse cx="187" cy="299" rx="4" ry="6" fill="#fff" opacity=".2"/>
+          <ellipse cx="241" cy="238" rx="14" ry="18" fill="#b8913a"/>
+          <ellipse cx="236" cy="231" rx="4" ry="5.5" fill="#fff" opacity=".25"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="wrap" style="display:block">
+    <div class="stats">
+      <div class="stat"><b>400 dönüm</b><span>Seydikemer'de kendi zeytinliğimiz</span></div>
+      <div class="stat"><b>350+ mg/kg</b><span>Analizlerimizdeki polifenol değeri</span></div>
+      <div class="stat"><b>3 yıldır</b><span>Gübre ve zirai ilaç kullanmıyoruz</span></div>
+      <div class="stat"><b>160 çeşit</b><span>Göcek'te hedeflediğimiz tıbbi aromatik bitki</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. HAKKIMIZDA -->
+<section class="sec about" id="hakkimizda">
+  <div class="wrap about-grid">
+    <div>
+      <div class="sec-head" style="margin-bottom:26px">
+        <span class="kicker">Hakkımızda</span>
+        <h2>Zeytini aceleye getirmeden, bilimle yetiştiriyoruz</h2>
+      </div>
+      <div class="about-text">
+        <p>Bf Planlama olarak Muğla'nın Fethiye Gökçeovacık, Göcek ve Seydikemer bölgelerinde zeytinyağı, zeytin ve tıbbi aromatik bitki üretimi yapıyoruz.</p>
+        <p>Zeytinlerimiz, Seydikemer'deki 400 dönümlük kendi arazimizde, 10 yaş ve üzerindeki genç ağaçlarımızdan geliyor. Üretimin her aşamasını üniversitelerin ziraat fakülteleriyle ve alanında uzman profesörlerle birlikte planlıyoruz. Ne yaptığımızı tahmine değil, bilgiye dayandırmayı seviyoruz.</p>
+        <p>Toprağımıza da aynı özenle bakıyoruz: 3 yıldır arazimizde hiçbir gübre ya da zirai ilaç kullanmıyoruz.
+          <span data-org="off">Organik tarım sertifikasyon sürecimizi de bu ay tamamlıyoruz.</span>
+          <span data-org="on">Üretimimiz organik tarım sertifikalıdır.</span>
+        </p>
+        <p>Sıradaki hedefimiz Göcek. Oradaki 350 dönümlük arazimizde, yine ziraat fakülteleriyle başlattığımız iş birliğiyle, 160 çeşide kadar tıbbi aromatik bitki yetiştirmeye hazırlanıyoruz.</p>
+      </div>
+    </div>
+    <aside class="about-aside">
+      <h3>Üç bölge, tek anlayış</h3>
+      <ul class="places">
+        <li>
+          <div class="ic"><svg aria-hidden="true"><use href="#i-field"/></svg></div>
+          <div><b>Seydikemer</b><span>400 dönümlük zeytinliğimiz; Tavşan Yüreği, Memecik ve yabani zeytin</span></div>
+        </li>
+        <li>
+          <div class="ic"><svg aria-hidden="true"><use href="#i-leaf"/></svg></div>
+          <div><b>Göcek</b><span>350 dönümlük arazide tıbbi aromatik bitki üretimi hazırlığı</span></div>
+        </li>
+        <li>
+          <div class="ic"><svg aria-hidden="true"><use href="#i-pin"/></svg></div>
+          <div><b>Fethiye Gökçeovacık</b><span>Bizi ziyaret edebileceğiniz adresimiz</span></div>
+        </li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<!-- 3. HİZMETLER / ÜRÜNLER -->
+<section class="sec" id="urunler">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Ürünlerimiz ve Üretimimiz</span>
+      <h2>Ağaçtan sofraya, her adımı biz takip ediyoruz</h2>
+      <p>Zeytinyağından zeytine, yakında da tıbbi aromatik bitkilere kadar ne üretiyorsak kendi arazimizde, kendi gözetimimizde üretiyoruz.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <span class="num">01</span>
+        <h3>Soğuk Sıkım Zeytinyağı</h3>
+        <p>Zeytinlerimizi soğuk sıkım yöntemiyle yağa dönüştürüyoruz. Böylece zeytinin doğal antioksidanları olan polifenoller yağa olabildiğince geçiyor.</p>
+        <ul>
+          <li>Analizlerimizde polifenol değeri genellikle 350 mg/kg ve üzerinde</li>
+          <li>Kalitesini korumak için soğuk tanklarda, azot altında saklanır</li>
+          <li>Her hasat döneminde analizleri yeniden yaptırılır</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <span class="num">02</span>
+        <h3>Zeytin Üretimi</h3>
+        <p>Seydikemer'deki 400 dönümlük zeytinliğimizde, değerli yerli çeşitleri ziraat fakülteleriyle birlikte yetiştiriyoruz.</p>
+        <ul>
+          <li>Tavşan Yüreği, Memecik ve yabani zeytin</li>
+          <li>10 yaş ve üzerindeki genç ağaçlar</li>
+          <li><span data-org="off">3 yıldır gübresiz ve zirai ilaçsız; organik sertifikasyon sürecinde</span><span data-org="on">Organik sertifikalı, gübresiz ve zirai ilaçsız üretim</span></li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <span class="tag">Yakında</span>
+        <span class="num">03</span>
+        <h3>Tıbbi Aromatik Bitki Üretimi</h3>
+        <p>Göcek'teki 350 dönümlük arazimizde 160 çeşide kadar tıbbi aromatik bitki yetiştirmeye hazırlanıyoruz.</p>
+        <ul>
+          <li>Ziraat fakülteleriyle iş birliğine başladık</li>
+          <li>Alanında uzman profesörlerin rehberliğinde planlama</li>
+          <li>Gelişmelerden haberdar olmak için bize yazabilirsiniz</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="varieties">
+      <h3 class="sub">Zeytin çeşitlerimiz</h3>
+      <p>Her çeşidin kendine has bir karakteri var. Biz de yağımızın gücünü bu üç değerli çeşitten alıyoruz.</p>
+      <div class="vgrid">
+        <div class="variety">
+          <svg class="dot" style="color:#45542b" aria-hidden="true"><use href="#i-olive"/></svg>
+          <h4>Tavşan Yüreği</h4>
+          <p>Yağ verimi düşük ama karakteri güçlü bir yerli çeşit. Yapılan araştırmalar, bu çeşitten yüksek oleokantal içerikli yağ elde edilebildiğine dikkat çekiyor. Oleokantal, iyi bir sızma zeytinyağının boğazda bıraktığı o hafif yakıcılığın kaynağı olan doğal bir fenolik bileşen.</p>
+        </div>
+        <div class="variety">
+          <svg class="dot" style="color:#2f3a1f" aria-hidden="true"><use href="#i-olive"/></svg>
+          <h4>Memecik</h4>
+          <p>Ege'nin ve Muğla'nın köklü yağlık çeşidi. Kuraklığa dayanıklı, bu topraklara alışkın bir zeytin. Fenolik profilinde hidroksitirozol ve tirozol gibi değerli bileşenler bulunur.</p>
+        </div>
+        <div class="variety">
+          <svg class="dot" style="color:#b8913a" aria-hidden="true"><use href="#i-olive"/></svg>
+          <h4>Yabani Zeytin</h4>
+          <p>Doğada kendiliğinden yetişen, küçük taneli yabani zeytin. Az ama karakterli yağ verir; bu coğrafyanın en eski mirasını sofranıza taşır.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Polifenol vurgusu -->
+<section class="sec poly" aria-labelledby="poly-baslik">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Polifenol ve antioksidanlar</span>
+      <h2 id="poly-baslik">Zeytinyağının değeri, içindeki polifenolde saklı</h2>
+      <div class="poly-num">350+<small>mg/kg</small></div>
+      <p class="poly-cap">Analizlerimizde genellikle ölçtüğümüz polifenol değeri</p>
+    </div>
+    <div class="poly-text">
+      <p>Polifenoller, zeytinin kendi ürettiği doğal antioksidan bileşenlerdir. Natürel sızma zeytinyağını sıradan bir yağdan ayıran, o meyvemsi koku, hafif acılık ve boğazdaki yakıcılık büyük ölçüde onlardan gelir.</p>
+      <ul class="poly-list">
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Soğuk sıkım:</b> Zeytini ısıtmadan sıkarak bu hassas bileşenlerin yağa geçmesini sağlıyoruz.</span></li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Doğru çeşit:</b> Tavşan Yüreği, Memecik ve yabani zeytin, fenolik bileşenleriyle öne çıkan çeşitler.</span></li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Doğru saklama:</b> Yağımızı soğuk tanklarda azot altında bekleterek kalitesini koruyoruz.</span></li>
+      </ul>
+      <a class="btn btn-gold" href="https://no52.com.tr/zeytinyag-analiz-raporu" target="_blank" rel="noopener">Analiz raporlarını inceleyin</a>
+      <p class="note">Polifenol değeri hasat yılına ve partiye göre değişebilir. Güncel değerler için analiz raporlarımıza bakabilirsiniz.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Polifenolü öne çıkaran özellikler -->
+<section class="sec traits" id="polifenol" aria-labelledby="traits-baslik">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">İyi zeytinyağı nasıl anlaşılır?</span>
+      <h2 id="traits-baslik">Polifenolü öne çıkaran 8 özellik</h2>
+      <p>Bir zeytinyağının polifenol değeri ağaçta başlar, sofrada korunur. Bu yolun bir kısmı bizim elimizde, bir kısmı sizin.</p>
+    </div>
+    <div class="legend">
+      <span><i style="background:var(--olive-800)"></i>Üretimde: bizim yaptıklarımız</span>
+      <span><i style="background:var(--gold-soft)"></i>Sofranızda: sizin yapabilecekleriniz</span>
+    </div>
+    <div class="tgrid">
+      <article class="trait">
+        <span class="n">01</span><span class="where uretim">Üretimde</span>
+        <h3>Meyveden gelen yağ</h3>
+        <p>Zeytinyağı, çekirdek yağlarından farklı olarak doğrudan zeytin meyvesinin sıkılmasıyla elde edilir. Bu yüzden zeytinin kendi antioksidanlarını, yani polifenolleri taşıyan bir meyve suyudur.</p>
+      </article>
+      <article class="trait">
+        <span class="n">02</span><span class="where uretim">Üretimde</span>
+        <h3>Değerli çeşitler</h3>
+        <p>Her zeytin çeşidinin yağı farklıdır. Oleokantal potansiyeliyle öne çıkan Tavşan Yüreği, hidroksitirozol ve tirozol içeren Memecik ve karakterli yabani zeytin, yağımızın fenolik gücünü oluşturur.</p>
+      </article>
+      <article class="trait">
+        <span class="n">03</span><span class="where uretim">Üretimde</span>
+        <h3>Doğru hasat zamanı</h3>
+        <p>Zeytin ne fazla yeşilken ne de fazla olgunken toplanmalı. Rengin yeşilden mora döndüğü alacalı dönem, polifenol ile yağ dengesinin en iyi olduğu zamandır.</p>
+      </article>
+      <article class="trait">
+        <span class="n">04</span><span class="where uretim">Üretimde</span>
+        <h3>Soğuk sıkım</h3>
+        <p>Polifenoller ısıya hassastır. Zeytini düşük sıcaklıkta işleyerek bu bileşenlerin yağa geçmesini sağlıyoruz. Sıcaklık yükseldikçe polifenoller kaybolur, asit ve peroksit artar.</p>
+      </article>
+      <article class="trait">
+        <span class="n">05</span><span class="where uretim">Üretimde</span>
+        <h3>Azot altında saklama</h3>
+        <p>Oksijen, ışık ve ısı polifenollerin düşmanıdır. Yağımızı bu yüzden soğuk tanklarda, azot altında, havayla temas etmeden bekletiyoruz.</p>
+      </article>
+      <article class="trait">
+        <span class="n">06</span><span class="where uretim">Üretimde</span>
+        <h3>Analiz raporu</h3>
+        <p>İyi bir yağın arkasında akredite laboratuvar raporu olur; rapor, yağın kimliğidir. Analizlerimizde polifenol değerimiz genellikle 350 mg/kg ve üzerinde çıkıyor ve raporlarımız herkese açık.</p>
+      </article>
+      <article class="trait">
+        <span class="n">07</span><span class="where sofra">Sofranızda</span>
+        <h3>Boğazdaki yakıcılık</h3>
+        <p>Yağı sade tadın. Boğazda hafif bir yakıcılık ve dilde acılık hissediyorsanız bu bir kusur değil, polifenollerin işaretidir. Renk ise kalite hakkında bir şey söylemez.</p>
+      </article>
+      <article class="trait">
+        <span class="n">08</span><span class="where sofra">Sofranızda</span>
+        <h3>Doğru saklama, çiğ tüketim</h3>
+        <p>Koyu renkli şişede, serin ve karanlık bir yerde, ağzı kapalı saklayın; ocağın yanında bekletmeyin. Polifenollerden en iyi salatada ve kahvaltıda, çiğ tüketerek faydalanırsınız.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 4. NEDEN BİZ? -->
+<section class="sec" id="neden-biz">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Neden Biz?</span>
+      <h2>Güvenle tercih etmeniz için üç sebep</h2>
+    </div>
+    <div class="why">
+      <div class="why-item">
+        <div class="ic"><svg aria-hidden="true"><use href="#i-flask"/></svg></div>
+        <h3>Bilimle üretiyoruz</h3>
+        <p>Üniversitelerin ziraat fakülteleri ve alanında uzman profesörlerle birlikte çalışıyoruz. Ağacın bakımından hasada kadar her kararımızın arkasında bilgi var.</p>
+      </div>
+      <div class="why-item">
+        <div class="ic"><svg aria-hidden="true"><use href="#i-leaf"/></svg></div>
+        <h3>Toprağa saygı duyuyoruz</h3>
+        <p>3 yıldır arazimizde gübre ve zirai ilaç kullanmıyoruz.
+          <span data-org="off">Organik tarım sertifikasyonumuzu da bu ay tamamlıyoruz.</span>
+          <span data-org="on">Organik tarım sertifikamızla bunu belgeliyoruz.</span>
+        </p>
+      </div>
+      <div class="why-item">
+        <div class="ic"><svg aria-hidden="true"><use href="#i-field"/></svg></div>
+        <h3>Kendi zeytinliğimiz, açık üretim</h3>
+        <p>Zeytinlerimiz Seydikemer'deki 400 dönümlük kendi arazimizden geliyor. Analizlerimizi düzenli yaptırıyor ve sonuçları sizinle paylaşıyoruz.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. İLETİŞİM -->
+<section class="sec contact" id="iletisim">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">İletişim</span>
+      <h2>Sorularınız için buradayız</h2>
+      <p>Ürünlerimiz, siparişler ya da üretimimiz hakkında merak ettiğiniz her şeyi sorabilirsiniz. Arayın, yazın ya da bizi ziyaret edin.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="cinfo">
+        <div class="crow">
+          <div class="ic"><svg aria-hidden="true"><use href="#i-phone"/></svg></div>
+          <div><small>Telefon</small><a href="tel:+905016114848">+90 501 611 48 48</a></div>
+        </div>
+        <div class="crow">
+          <div class="ic"><svg aria-hidden="true"><use href="#i-mail"/></svg></div>
+          <div><small>E-posta</small><a href="mailto:bilgi@no52.com.tr">bilgi@no52.com.tr</a></div>
+        </div>
+        <div class="crow">
+          <div class="ic"><svg aria-hidden="true"><use href="#i-pin"/></svg></div>
+          <div>
+            <small>Adres</small>
+            <p>Gökçeovacık Mah. Eski Gökçeovacık Sok. No: 52<br>Fethiye / Muğla</p>
+            <a class="link" href="https://goo.gl/maps/5JFUCUxtp9B1AJio7" target="_blank" rel="noopener">Yol tarifi al →</a>
+          </div>
+        </div>
+        <div class="crow">
+          <div class="ic"><svg aria-hidden="true"><use href="#i-clock"/></svg></div>
+          <div>
+            <small>Çalışma Saatleri</small>
+            <ul class="hours">
+              <li><span>Hafta içi</span><span>08:30 – 18:00</span></li>
+              <li><span>Cumartesi</span><span>09:00 – 14:00</span></li>
+              <li><span>Pazar</span><span>Kapalı</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="wa-card">
+        <h3>En hızlı yol: WhatsApp</h3>
+        <p>Bize bir mesaj atmanız yeterli. Sorularınızı yanıtlayalım, size uygun ürünü birlikte bulalım.</p>
+        <a class="btn btn-gold" href="https://wa.me/905016114848?text=Merhaba%2C%20Bf%20Planlama%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp'tan Yazın
+        </a>
+        <a class="btn btn-ghost" style="color:var(--cream);border-color:rgba(248,244,234,.5)" href="tel:+905016114848">
+          <svg aria-hidden="true"><use href="#i-phone"/></svg>Hemen Arayın
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yil">2026</span> Bf Planlama · Fethiye, Göcek, Seydikemer</span>
+    <a href="#giris">Başa dön ↑</a>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/905016114848?text=Merhaba%2C%20Bf%20Planlama%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" aria-label="WhatsApp ile yazın">
+  <svg aria-hidden="true"><use href="#i-chat"/></svg><span>WhatsApp</span>
+</a>
+
+<script>
+  // Mobil menü
+  (function(){
+    var btn = document.querySelector('.menu-btn');
+    var nav = document.getElementById('menu');
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+      btn.setAttribute('aria-label', open ? 'Menüyü kapat' : 'Menüyü aç');
+    });
+    nav.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ nav.classList.remove('open'); btn.setAttribute('aria-expanded', false); });
+    });
+    document.getElementById('yil').textContent = new Date().getFullYear();
+  })();
+</script>
+</body>
+</html>
